@@ -70,7 +70,12 @@ class Game {
         cars[index-1].y = y;
 
         if (index === player.index){
-          cars[index - 1].shapeColor = "red";
+          //cars[index - 1].shapeColor = "red";
+          push();
+          stroke(10);
+          fill(255,0,0);
+          ellipse(x,y,60,60);
+          pop();
           camera.position.x = displayWidth/2;
           camera.position.y = cars[index-1].y;
         }
@@ -95,5 +100,15 @@ class Game {
 
   end(){
     console.log("Game Ended");
+  }
+
+  resetGame(){
+    game.update(0);
+    player.updateCount(0);
+    /*database.ref('/').update({
+      players: null
+    });*/
+    form.show();
+    canvas.background(255);
   }
 }
